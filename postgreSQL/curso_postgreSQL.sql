@@ -404,3 +404,51 @@ SELECT COUNT(id),
 	   ROUND(AVG(id),0)
 FROM funcionarios;
 
+
+	
+SELECT nome FROM funcionarios;
+
+SELECT nome FROM funcionarios
+ORDER BY nome;
+	
+	
+SELECT DISTINCT /* UTILIZADO PARA NAO REPETIR VALORES DAS COLUNAS */
+	   nome
+	FROM funcionarios
+	ORDER BY nome;
+	
+SELECT DISTINCT nome, sobrenome FROM funcionarios
+ORDER BY nome;
+	
+SELECT NOME,COUNT(ID) FROM FUNCIONARIOS
+GROUP BY NOME
+ORDER BY COUNT(ID) DESC;
+	
+SELECT  
+	   nome,
+	   sobrenome,
+	   COUNT(id)
+	FROM funcionarios
+	GROUP BY 1, 2
+	ORDER BY nome;
+	
+	
+SELECT curso.nome, COUNT(aluno.id) FROM aluno
+JOIN aluno_curso ON aluno.id = aluno_curso.aluno_id
+JOIN curso ON curso.id = aluno_curso.curso_id
+GROUP BY 1
+ORDER BY 1;
+	
+SELECT  curso.nome,COUNT(aluno.id) FROM curso
+LEFT JOIN aluno_curso ON aluno_curso.curso_id = curso.id
+LEFT JOIN aluno ON aluno.id = aluno_curso.aluno_id
+GROUP BY 1
+HAVING COUNT(aluno.id) > 1;
+		
+SELECT nome, COUNT(id) FROM funcionarios
+GROUP BY nome
+HAVING COUNT(id) > 1;
+
+SELECT nome, COUNT(id)FROM funcionarios
+GROUP BY nome
+HAVING COUNT(id) = 1;
