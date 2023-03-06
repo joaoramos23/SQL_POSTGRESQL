@@ -7,7 +7,7 @@ PostgreSQL
 CREATE DATABASE nome_database;
 
 * Apagar DATABASE(banco de dados):
-* DROP DATABASE nome_database;
+DROP DATABASE nome_database;
 
 
 *Data types PostgreSQL:
