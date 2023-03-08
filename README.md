@@ -138,3 +138,45 @@ DROP DATABASE nome_database;
 -GROUP BY: Utilizamos quando utilizamos funções de agregação.
 
 -HAVING: Função é a mesma coisa do WHERE, mas é utilizada quando usamos funções de agrupamento.
+
+# PostgreSQL parte II
+
+<h3>Chave Estrangeira:</h3>
+- Podemos utilizar outra forma para nomear uma chave estrangeira. Podemos criar a tabela e na coluna que queremos referenciar a chave estrangeira usamos -> "nome_coluna1 TIPO REFERENCES nome_coluna2; "
+
+<h3>Informações com relacionamento de campo:</h3>
+- Não é necessário ter um método CASCADE para atualizar ou deletar colunas que não tem vinculo/relacionamentos com outras colunas.  
+
+<h3>Operador IN:</h3>
+- Com a cláusula "IN()" , conseguimos passar vários parâmetros, que serão comparados com o campo que determinamos. "SELECT * FROM nome_tabela WHERE nome_coluna  IN(parametro1,parametro2,parametroX);"
+
+<h3>Subqueries:</h3>
+-  Instrução do tipo SELECT dentro de outra instrução SQL, que efetua consultas que, de outra forma, seriam extremamente complicadas ou impossíveis de serem feitas. Normalmente utilizando a cláusula "IN()".
+"SELECT * FROM nome_tabela1 WHERE nome_coluna1 IN (SELECT nome_coluna2 FROM nome_tabela2 WHERE nome_coluna3 NOT LIKE '% %');"
+
+<h3>Funções STRINGS:</h3>
+(Link documentação: https://www.postgresql.org/docs/15/functions-string.html)
+
+- || Serve para concatenar STRINGS. "SELECT (nome_coluna1 || 'espaço' || nome_coluna2) AS nome_concatenacao FROM tabela;"
+- Utilizando a função "CONCAT()" tambem serve para concatenar STRINGS mas ela ignora os parâmetros vazios "NULL".
+
+<h3>Funções DATAS:</h3>
+(Link documentação:
+https://www.postgresql.org/docs/15/functions-datetime.html)
+
+- "NOW()" Retorna a data, hora e timezone daquele instante.
+- "AGE()" Retorna quantos anos a pessoa tem.
+
+<h3>Funções MATEMATICAS:</h3>
+(Link documentação:
+https://www.postgresql.org/docs/15/functions-math.html)
+
+<h3>Converção de dados:</h3>
+- " :: " é utilizado para converter um valor em tipo de dado diferente.
+- Utiliza-se " TO_CHAR() " para fazer a conversão de dados para string. Exemplo: " TO_CHAR(NOW('DD/MM/YYYY');"
+
+<h3>Nomear consultas:</h3>
+- Para nomear consultas basta utilizar o "VIEW();". 
+- Boa praticar nomear a VIEW começando por 'VW_NOME_VIEW'.
+- Pensemos na hipótese de executarmos SELECT FROM cursos_por_categoria WHERE numero_cursos > 3. O código executaria, inicialmente, o SQL que retorna o número de cursos por categoria para, em seguida, executar o filtro, mas sem as otimizações internas do banco de dados. Isso significa que se executássemos o filtro diretamente na nossa query, teríamos uma performance melhor do que aplicando o filtro sobre uma tabela virtual.
+
