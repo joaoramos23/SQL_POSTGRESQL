@@ -452,3 +452,5 @@ HAVING COUNT(id) > 1;
 SELECT nome, COUNT(id)FROM funcionarios
 GROUP BY nome
 HAVING COUNT(id) = 1;
+
+					
