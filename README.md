@@ -104,40 +104,40 @@ DROP DATABASE nome_database;
 
 <h3>Restrição de chave estrangeira:</h3>
 
--DELETE CASCADE: Ao criar a tabela adicionar a instrução de -> "ON DELETE CASCADE;" para poder excluir a coluna.
+- DELETE CASCADE: Ao criar a tabela adicionar a instrução de -> "ON DELETE CASCADE;" para poder excluir a coluna.
 
--UPDATE CASCADE: Ao criar a tabela adicionar a instrução de -> "ON UPDATE CASCADE;" para poder atualizar a coluna.
+- UPDATE CASCADE: Ao criar a tabela adicionar a instrução de -> "ON UPDATE CASCADE;" para poder atualizar a coluna.
 
 
 <h3>Ordenando as consultas:</h3>
 
--ORDER BY: Ordena um campo tanto CRESCENTE como DECRESCENTE. "ORDER BY nome_coluna ASC;" / "ORDER BY nome_coluna DESC;" utilizando sempre no final da consulta.
+- ORDER BY: Ordena um campo tanto CRESCENTE como DECRESCENTE. "ORDER BY nome_coluna ASC;" / "ORDER BY nome_coluna DESC;" utilizando sempre no final da consulta.
 
--LIMIT: Para limitar os registros. "LIMIT 5;" irá mostrar apenas os 5 registros.
--OFFSET: Ira percorrer os registro a partir do parâmetro dado. 
+- LIMIT: Para limitar os registros. "LIMIT 5;" irá mostrar apenas os 5 registros.
+- OFFSET: Ira percorrer os registro a partir do parâmetro dado. 
 "OFFSET 1;" -> Começará a consultar a partir da posição 2.
 
 
 <h3>Funções de agregação:</h3>
--COUNT: Calcula a quantidade de registros. "SELECT COUNT(nome_coluna) FROM nome_tabela;".
+- COUNT: Calcula a quantidade de registros. "SELECT COUNT(nome_coluna) FROM nome_tabela;".
 
--SUM: Soma os valores do registro. "SELECT SUM(nome_coluna) FROM nome_tabela;".
+- SUM: Soma os valores do registro. "SELECT SUM(nome_coluna) FROM nome_tabela;".
 
--MAX / MIN: Mostra o valor minimo e maximo da tabela.. "SELECT MAX / MIN(nome_coluna) FROM nome_tabela;".
+- MAX / MIN: Mostra o valor minimo e maximo da tabela.. "SELECT MAX / MIN(nome_coluna) FROM nome_tabela;".
 
--COUNT: Calcula a media dos valores do registros. "SELECT AVG(nome_coluna) FROM nome_tabela;".
+- COUNT: Calcula a media dos valores do registros. "SELECT AVG(nome_coluna) FROM nome_tabela;".
 
--ROUND: Arredando os valores dos registros.
+- ROUND: Arredando os valores dos registros.
 "ROUND(AVG(nome_coluna),qntd. casas decimais)"
 
 
 <h3>Agrupamento de consultas:</h3>
 
--DISTINCT: Todos os dados da consulta não irão se repetir.
+- DISTINCT: Todos os dados da consulta não irão se repetir.
 
--GROUP BY: Utilizamos quando utilizamos funções de agregação.
+- GROUP BY: Utilizamos quando utilizamos funções de agregação.
 
--HAVING: Função é a mesma coisa do WHERE, mas é utilizada quando usamos funções de agrupamento.
+- HAVING: Função é a mesma coisa do WHERE, mas é utilizada quando usamos funções de agrupamento.
 
 # PostgreSQL parte II
 
@@ -151,7 +151,7 @@ DROP DATABASE nome_database;
 - Com a cláusula "IN()" , conseguimos passar vários parâmetros, que serão comparados com o campo que determinamos. "SELECT * FROM nome_tabela WHERE nome_coluna  IN(parametro1,parametro2,parametroX);"
 
 <h3>Subqueries:</h3>
--  Instrução do tipo SELECT dentro de outra instrução SQL, que efetua consultas que, de outra forma, seriam extremamente complicadas ou impossíveis de serem feitas. Normalmente utilizando a cláusula "IN()".
+- Instrução do tipo SELECT dentro de outra instrução SQL, que efetua consultas que, de outra forma, seriam extremamente complicadas ou impossíveis de serem feitas. Normalmente utilizando a cláusula "IN()".
 "SELECT * FROM nome_tabela1 WHERE nome_coluna1 IN (SELECT nome_coluna2 FROM nome_tabela2 WHERE nome_coluna3 NOT LIKE '% %');"
 
 <h3>Funções STRINGS:</h3>
