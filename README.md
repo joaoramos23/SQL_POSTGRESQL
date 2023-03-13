@@ -104,40 +104,40 @@ DROP DATABASE nome_database;
 
 <h3>Restrição de chave estrangeira:</h3>
 
--DELETE CASCADE: Ao criar a tabela adicionar a instrução de -> "ON DELETE CASCADE;" para poder excluir a coluna.
+- DELETE CASCADE: Ao criar a tabela adicionar a instrução de -> "ON DELETE CASCADE;" para poder excluir a coluna.
 
--UPDATE CASCADE: Ao criar a tabela adicionar a instrução de -> "ON UPDATE CASCADE;" para poder atualizar a coluna.
+- UPDATE CASCADE: Ao criar a tabela adicionar a instrução de -> "ON UPDATE CASCADE;" para poder atualizar a coluna.
 
 
 <h3>Ordenando as consultas:</h3>
 
--ORDER BY: Ordena um campo tanto CRESCENTE como DECRESCENTE. "ORDER BY nome_coluna ASC;" / "ORDER BY nome_coluna DESC;" utilizando sempre no final da consulta.
+- ORDER BY: Ordena um campo tanto CRESCENTE como DECRESCENTE. "ORDER BY nome_coluna ASC;" / "ORDER BY nome_coluna DESC;" utilizando sempre no final da consulta.
 
--LIMIT: Para limitar os registros. "LIMIT 5;" irá mostrar apenas os 5 registros.
--OFFSET: Ira percorrer os registro a partir do parâmetro dado. 
+- LIMIT: Para limitar os registros. "LIMIT 5;" irá mostrar apenas os 5 registros.
+- OFFSET: Ira percorrer os registro a partir do parâmetro dado. 
 "OFFSET 1;" -> Começará a consultar a partir da posição 2.
 
 
 <h3>Funções de agregação:</h3>
--COUNT: Calcula a quantidade de registros. "SELECT COUNT(nome_coluna) FROM nome_tabela;".
+- COUNT: Calcula a quantidade de registros. "SELECT COUNT(nome_coluna) FROM nome_tabela;".
 
--SUM: Soma os valores do registro. "SELECT SUM(nome_coluna) FROM nome_tabela;".
+- SUM: Soma os valores do registro. "SELECT SUM(nome_coluna) FROM nome_tabela;".
 
--MAX / MIN: Mostra o valor minimo e maximo da tabela.. "SELECT MAX / MIN(nome_coluna) FROM nome_tabela;".
+- MAX / MIN: Mostra o valor minimo e maximo da tabela.. "SELECT MAX / MIN(nome_coluna) FROM nome_tabela;".
 
--COUNT: Calcula a media dos valores do registros. "SELECT AVG(nome_coluna) FROM nome_tabela;".
+- COUNT: Calcula a media dos valores do registros. "SELECT AVG(nome_coluna) FROM nome_tabela;".
 
--ROUND: Arredando os valores dos registros.
+- ROUND: Arredando os valores dos registros.
 "ROUND(AVG(nome_coluna),qntd. casas decimais)"
 
 
 <h3>Agrupamento de consultas:</h3>
 
--DISTINCT: Todos os dados da consulta não irão se repetir.
+- DISTINCT: Todos os dados da consulta não irão se repetir.
 
--GROUP BY: Utilizamos quando utilizamos funções de agregação.
+- GROUP BY: Utilizamos quando utilizamos funções de agregação.
 
--HAVING: Função é a mesma coisa do WHERE, mas é utilizada quando usamos funções de agrupamento.
+- HAVING: Função é a mesma coisa do WHERE, mas é utilizada quando usamos funções de agrupamento.
 
 # PostgreSQL parte II
 
@@ -151,7 +151,7 @@ DROP DATABASE nome_database;
 - Com a cláusula "IN()" , conseguimos passar vários parâmetros, que serão comparados com o campo que determinamos. "SELECT * FROM nome_tabela WHERE nome_coluna  IN(parametro1,parametro2,parametroX);"
 
 <h3>Subqueries:</h3>
--  Instrução do tipo SELECT dentro de outra instrução SQL, que efetua consultas que, de outra forma, seriam extremamente complicadas ou impossíveis de serem feitas. Normalmente utilizando a cláusula "IN()".
+- Instrução do tipo SELECT dentro de outra instrução SQL, que efetua consultas que, de outra forma, seriam extremamente complicadas ou impossíveis de serem feitas. Normalmente utilizando a cláusula "IN()".
 "SELECT * FROM nome_tabela1 WHERE nome_coluna1 IN (SELECT nome_coluna2 FROM nome_tabela2 WHERE nome_coluna3 NOT LIKE '% %');"
 
 <h3>Funções STRINGS:</h3>
@@ -180,3 +180,72 @@ https://www.postgresql.org/docs/15/functions-math.html)
 - Boa praticar nomear a VIEW começando por 'VW_NOME_VIEW'.
 - Pensemos na hipótese de executarmos SELECT FROM cursos_por_categoria WHERE numero_cursos > 3. O código executaria, inicialmente, o SQL que retorna o número de cursos por categoria para, em seguida, executar o filtro, mas sem as otimizações internas do banco de dados. Isso significa que se executássemos o filtro diretamente na nossa query, teríamos uma performance melhor do que aplicando o filtro sobre uma tabela virtual.
 
+# PostgreSQL - DML e DDL - parte III
+
+ <h3> DDL:</h3>
+- Data Definition Language - Linguagem de Definição de Dados. São os comandos que interagem com os objetos do banco. Exemplo: "CREATE","ALTER" e "DROP".
+
+<h3>Schemas:</h3>
+- O schema é um tipo de objeto de banco de dados cujo propósito é ser uma camada de organização hierárquica que está logo abaixo de uma base de dados.
+" CREATE SCHEMA nome_schema; "
+
+<h3>Parâmetros para criar DATABASE:</h3>
+(Link documentação: https://www.postgresql.org/docs/current/sql-createdatabase.html)
+
+- OWNER: Dono do banco de dados, por padrão é o usuário que esta conectado.
+- TEMPLATE: O que o banco de dados irá conter.
+- ENCODING: A tabela de caracteres que a gente vai utilizar. Exemplo: "utf-8".
+- LC_COLLATE: Como o SGBD vai tratar a ordenação dos dados.
+- LC_CTYPE: Letras maiúsculas ou minúsculas vão interferir em comparações.
+- TABLESPACE: Criar espaços físicos onde o SGBD vai separar, para otimizar o banco de dados.
+- ALLOW_CONNECTIONS: Para permitir conexões. A ideia é que a gente permita sempre.
+- CONNECTION LIMIT: Limite da conexão que iremos ter.
+- IS_TEMPLATE: Se estamos criando um template. Por padrão não vem como template.
+
+
+<h3>Parâmetros para criar TABLE:</h3> 
+(Link documentação: https://www.postgresql.org/docs/12/sql-createtable.html)
+
+- TEMPORARY: Podemos criar uma tabela temporária que irá deixar de existir logo após desconectar do banco de dados.
+- " IF NOT EXISTS ": Só irá criar a tabela se ela não existir.
+- DEFAULT: Podemos adicionar um valor padrão a uma coluna, se ela não for preenchida ela terá um valor padrão.
+- CHECK: Podemos fazer verificações para garantir que a coluna não seja uma string vazia por exemplo.
+
+
+<h3>Alterando informações da TABLE:</h3>
+(Link documentação: https://www.postgresql.org/docs/12/sql-altertable.html)
+
+- "ALTER TABLE;": Altera informações da tabela.
+- Para alterar o nome da tabela usamos " ALTER TABLE nome_tabela RENAME TO novo_nome_tabela; "
+ 
+
+
+<h3>DML:</h3>
+- Data Manipulation Language - Linguagem de Manipulação de Dados. Exemplo: "INSERT","UPDATE","DELETE" e "SELECT".
+
+* Utilizando SELECT COM INSERT:
+" INSERT INTO nome_tabela SELECT corpo_do_select;"
+
+<h3>Importação de arquivos:</h3>
+- Utilizando a função de exportação e importação de dados.
+- Utilizando o comando "COPY";
+* UPDATE FROM:
+- Para atualizar alguma informação da coluna basta utilizar " UPDATE nome_tabela SET coluna_alteracao WHERE onde_alterar ".
+
+<h3>Transações:</h3>
+ (Link documentação: https://www.postgresql.org/docs/current/tutorial-transactions.html)
+
+- "START TRANSACTION" ou "BEGIN" para iniciar um transação.
+- "ROLLBACK": Desfaz todas as alterações a partir do ponto de transação.
+- "COMMIT": Confirma todas as alterações a partir do ponto de transação.
+
+<h3>Sequencias:</h3>
+- As "SEQUENCES" facilitam relacionamentos, e trazem algumas facilidades.
+- Para criar uma SEQUENCES basta digitar "CREATE SEQUENCE nome_sequences".
+- Inserir umas SEQUENCES na hora de criar uma tabela, basta por ela como valor DEFAULT e utilizar um parametro de proximo valor : "DEFAULT NEXTVAL('nome_sequences')".
+- Outro parâmetro é o "SELECT CURRVAL ('nome_sequences');" que mostra o valor atual da SQUENCES.
+
+<h3>ENUM:</h3>
+(Link documentação: https://www.postgresql.org/docs/current/sql-createtype.html)
+
+- Criar a coluna já especificando quais as informações podem ter nela.
