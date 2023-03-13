@@ -229,3 +229,23 @@ https://www.postgresql.org/docs/15/functions-math.html)
 <h3>Importação de arquivos:</h3>
 - Utilizando a função de exportação e importação de dados.
 - Utilizando o comando "COPY";
+* UPDATE FROM:
+- Para atualizar alguma informação da coluna basta utilizar " UPDATE nome_tabela SET coluna_alteracao WHERE onde_alterar ".
+
+<h3>Transações:</h3>
+ (Link documentação: https://www.postgresql.org/docs/current/tutorial-transactions.html)
+
+- "START TRANSACTION" ou "BEGIN" para iniciar um transação.
+- "ROLLBACK": Desfaz todas as alterações a partir do ponto de transação.
+- "COMMIT": Confirma todas as alterações a partir do ponto de transação.
+
+<h3>Sequencias:</h3>
+- As "SEQUENCES" facilitam relacionamentos, e trazem algumas facilidades.
+- Para criar uma SEQUENCES basta digitar "CREATE SEQUENCE nome_sequences".
+- Inserir umas SEQUENCES na hora de criar uma tabela, basta por ela como valor DEFAULT e utilizar um parametro de proximo valor : "DEFAULT NEXTVAL('nome_sequences')".
+- Outro parâmetro é o "SELECT CURRVAL ('nome_sequences');" que mostra o valor atual da SQUENCES.
+
+<h3>ENUM:</h3>
+(Link documentação: https://www.postgresql.org/docs/current/sql-createtype.html)
+
+- Criar a coluna já especificando quais as informações podem ter nela.
